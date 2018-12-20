@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="android.mp" version="0.1.0"
+	xmlns="http://apache.org/cordova/ns/plugins/1.0"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+	<name>MerchantPlugin</name>
+	<js-module name="MerchantPlugin" src="www/MerchantPlugin.js">
+		<clobbers target="cordova.plugins.MerchantPlugin" />
+	</js-module>
+	<platform name="android">
+		<config-file parent="/*" target="res/xml/config.xml">
+			<feature name="MerchantPlugin">
+				<param name="android-package" value="android.mp.MerchantPlugin" />
+			</feature>
+		</config-file>
+		<config-file parent="/*" target="AndroidManifest.xml">
+		<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+			<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+			<uses-permission android:name="android.permission.INTERNET" />
+			<uses-permission android:name="android.permission.FLASHLIGHT" />
+			<uses-permission android:name="android.permission.CAMERA" />
+			<uses-permission android:name="android.permission.VIBRATE" />
+			<uses-permission android:name="android.permission.GET_TASKS" /></config-file>
+		<source-file src="src/android/MerchantPlugin.java" target-dir="src/android/mp/MerchantPlugin" />
+		<framework src="src/android/demotoast.gradle" custom="true" type="gradleReference"/>
+		<resource-file src="src/android/libs/merchantSDKRelease.aar" target="libs/merchantSDKRelease.aar"/>
+		<dependency id="cordova-plugin-compat" version="^1.0.0"/>
+	</platform>
+</plugin>
